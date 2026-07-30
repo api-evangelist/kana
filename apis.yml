@@ -1,7 +1,21 @@
 aid: kana
 name: Kana
-description: Kana is a company surfaced as a portfolio company of mayfield and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Kana is an agentic AI growth and marketing platform that helps brands discover
+  high-precision audiences, optimize acquisition efficiency, and stay visible across
+  AI-driven discovery environments such as LLM answer engines, search copilots, and
+  autonomous agents. Founded by martech veterans Tom Chavez and Vivek Vaidya (previously
+  Rapt, acquired by Microsoft, and Krux, acquired by Salesforce) and incubated in the
+  super{set} startup studio, Kana raised a $15M seed round led by Mayfield in February
+  2026. The platform orchestrates specialized AI agents that reason over customer data,
+  plan multi-step workflows, and recommend next-best actions across a suite of purpose-built
+  applications: Campaign Orchestrator, Marketing Intelligence, Personalization, Synthetic
+  Data Generation, Media Proposal Generator, Category Intelligence, Audience Builder,
+  OmniChannel Media Planner, and an Agentic Data Platform. Proprietary just-in-time data
+  integration connects to existing CRM, CDP, marketing-automation, and data-warehouse
+  systems without disruptive infrastructure changes, keeping a human-in-the-loop review
+  step. Kana publishes no public developer API at this time; this profile captures its
+  public identity, legal/compliance posture, and discovery surface.
 url: https://raw.githubusercontent.com/api-evangelist/kana/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,11 +23,31 @@ x-backed-by:
 - mayfield
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://cdn.prod.website-files.com/6938c88532164b75764d7ec5/693c0c5cc53ad3db97596f39_929e4e790efd0fbe50a55bee450f14e8_Frame%202087327472.jpg
 tags:
 - Company
+- Marketing
+- Artificial Intelligence
+- Agentic AI
+- Marketing Technology
+- Audience Intelligence
+- Customer Data Platform
+- AI Search Optimization
+- Growth
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -22,4 +56,23 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://kana.ai
+  url: https://www.kana.ai
+- type: Blog
+  url: https://www.kana.ai/blog
+- type: Support
+  url: https://www.kana.ai/contact-us
+- type: PrivacyPolicy
+  url: https://www.kana.ai/privacy-policy
+- type: Compliance
+  url: https://www.kana.ai/legal
+- type: Conformance
+  url: conformance/kana-conformance.yml
+- type: LLMsTxt
+  url: llms/kana-llms.txt
+- type: DomainSecurity
+  url: security/kana-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

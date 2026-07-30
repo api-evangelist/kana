@@ -1,0 +1,55 @@
+# Project Name
+Kana
+
+# Tagline
+AI That Finds Your Audience, Grows Revenue, and Protects Your Brand.
+
+# Description
+Kana is an agentic growth platform that helps brands discover high-precision audiences, optimize acquisition efficiency, and remain visible across AI-driven discovery environments such as LLM answer engines, search copilots, and autonomous agents.
+
+# Core Mission
+To transform fragmented marketing signals into real-time intelligence that drives efficient growth, sustainable revenue expansion, and durable brand visibility in the AI era.
+
+# Primary Focus Areas
+1. AI Visibility and AI Search Optimization (AEO)
+2. High-Precision Audience Intelligence
+3. Agentic Analytics and Decision Automation
+4. Marketing Efficiency and Revenue Optimization
+
+# Key Problems Solved
+1. **Audience Signal Degradation:** Traditional targeting methods relying on third-party data are becoming ineffective and expensive.
+2. **AI Discovery Risk:** Brands risk losing visibility as customer discovery shifts from traditional search to AI answer engines.
+3. **Operational Complexity:** Marketing and data teams struggle with fragmented dashboards and delayed insights.
+4. **Inefficient Growth Spend:** Budget is often wasted on broad incentives and poorly optimized acquisition strategies.
+
+# Solutions & Capabilities
+
+## Audience Intelligence
+- Synthetic data enrichment enhances first-party datasets with high-resolution behavioral and contextual attributes.
+- Precision audience modeling identifies high-intent segments and reduces reliance on legacy lookalike strategies.
+
+## AI Visibility (AEO)
+- Structured content optimization ensures Kana clients remain discoverable and correctly interpreted by LLMs and AI agents.
+- Semantic relevance modeling improves brand recommendation probability in AI-generated answers.
+
+## Agentic Analytics
+- Autonomous analytics agents unify marketing, revenue, and behavioral data streams.
+- Real-time performance explanations and recommended next-best actions replace static reporting.
+
+## Growth Optimization
+- AI-driven campaign orchestration aligns targeting, creative, and offer strategy.
+- Margin protection mechanisms reduce inefficient discounting and acquisition leakage.
+
+# Technical Architecture
+- Knowledge graph-driven data layer enables just-in-time data synthesis and interpretation.
+- Modular integrations connect with CRM, CDP, marketing automation platforms, and data warehouses.
+- Agentic execution framework supports continuous optimization across customer lifecycle touchpoints.
+
+# FAQ Context
+The Kana FAQ provides structured explanations of platform capabilities, AI visibility methodology, data modeling approach, integration architecture, and real-world use cases.
+
+# Canonical Website
+https://www.kana.ai
+
+# Sitemap
+https://kana.ai/sitemap.xml
