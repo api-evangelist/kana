@@ -14,8 +14,14 @@ description: >-
   OmniChannel Media Planner, and an Agentic Data Platform. Proprietary just-in-time data
   integration connects to existing CRM, CDP, marketing-automation, and data-warehouse
   systems without disruptive infrastructure changes, keeping a human-in-the-loop review
-  step. Kana publishes no public developer API at this time; this profile captures its
-  public identity, legal/compliance posture, and discovery surface.
+  step. Kana ships no public developer portal, but its application host apps.kana.ai does
+  expose a real callable surface: an OAuth 2.0 authorization server whose RFC 8414
+  metadata is served anonymously and declares MCP protocol 2025-03-26 with mcp:read /
+  mcp:write / kana:read / kana:write scopes, plus a per-deployment MCP endpoint and an
+  api-key-authenticated Skill API for running pipelines and retrieving their outputs.
+  Everything but the OAuth metadata sits behind a 401, so this profile captures Kana's
+  public identity, legal/compliance posture, authentication and scope model, and the
+  shape of the gated API surface.
 url: https://raw.githubusercontent.com/api-evangelist/kana/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -36,7 +42,7 @@ accessModel:
   method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-08-13'
 image: https://cdn.prod.website-files.com/6938c88532164b75764d7ec5/693c0c5cc53ad3db97596f39_929e4e790efd0fbe50a55bee450f14e8_Frame%202087327472.jpg
 tags:
 - Company
@@ -48,7 +54,56 @@ tags:
 - Customer Data Platform
 - AI Search Optimization
 - Growth
-apis: []
+apis:
+- name: Kana Skill API
+  description: >-
+    The callable surface a deployed Kana pipeline ("skill") exposes on the Kana
+    application host. POST /skill/{pipelineid} starts a run and returns a runid;
+    GET /run/{runid}/status reports progress and queue depth; GET /run/{runid}/output
+    returns the skill's outputs; PUT /file_ul stages an input file and returns a
+    temporary file id; GET /file_dl/{runid}/{fid} retrieves an output file. Every
+    operation is authenticated with an x-kana-apikey header. Kana's signed-in console
+    generates an OpenAPI 3.0.3 document per skill and renders it in an embedded Swagger
+    UI; that document is not published at a public URL, so no spec is stored here.
+  humanURL: https://apps.kana.ai/
+  baseURL: https://apps.kana.ai
+  tags:
+  - Agentic AI
+  - Marketing
+  - Workflow
+  properties:
+  - type: Authentication
+    url: authentication/kana-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kana-scopes.yml
+  - type: Conventions
+    url: conventions/kana-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kana-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/kana-lifecycle.yml
+  - type: RateLimits
+    url: rate-limits/kana-rate-limits.yml
+- name: Kana MCP Server
+  description: >-
+    Kana exposes each deployed agent/orchestrator as a remote MCP server at
+    https://apps.kana.ai/mcp/{public access key}, fronted by the platform's OAuth 2.0
+    authorization server (PKCE S256, RFC 7591 dynamic client registration, mcp:read and
+    mcp:write scopes). The authorization-server metadata declares MCP protocol version
+    2025-03-26. Tool sets are per-deployment and require an authenticated introspection,
+    so no vendor-wide tool catalog is published.
+  humanURL: https://apps.kana.ai/
+  baseURL: https://apps.kana.ai
+  tags:
+  - Model Context Protocol
+  - Agentic AI
+  properties:
+  - type: MCPServer
+    url: mcp/kana-mcp.yml
+  - type: Authentication
+    url: authentication/kana-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kana-scopes.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -71,8 +126,34 @@ common:
   url: llms/kana-llms.txt
 - type: DomainSecurity
   url: security/kana-domain-security.yml
+- type: GettingStarted
+  url: https://www.kana.ai/get-started
+- type: SignUp
+  url: https://www.kana.ai/get-started
+- type: HelpCenter
+  url: https://www.kana.ai/faq
+- type: WellKnown
+  url: well-known/kana-well-known.yml
+- type: Authentication
+  url: authentication/kana-authentication.yml
+- type: OAuthScopes
+  url: scopes/kana-scopes.yml
+- type: MCPServer
+  url: mcp/kana-mcp.yml
+- type: Conventions
+  url: conventions/kana-conventions.yml
+- type: ErrorCatalog
+  url: errors/kana-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/kana-lifecycle.yml
+- type: Plans
+  url: plans/kana-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/kana-rate-limits.yml
+- type: Packages
+  url: packages/kana-packages.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 10
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
