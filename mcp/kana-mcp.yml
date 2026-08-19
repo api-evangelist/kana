@@ -1,0 +1,72 @@
+generated: '2026-08-13'
+method: probed
+status: published
+source: https://apps.kana.ai/.well-known/oauth-authorization-server
+name: Kana MCP Server
+vendor: Kana
+protocol_version: '2025-03-26'
+deployment:
+  mode: remote
+  endpoint: https://apps.kana.ai/mcp/{public_access_key}
+  endpoint_is_templated: true
+  install: null
+  package: null
+  auth: oauth
+  verified: probed
+transport:
+  streamable_http: https://apps.kana.ai/mcp/{public_access_key}
+  sse: https://apps.kana.ai/sse
+  note: >-
+    Both /mcp and /sse on apps.kana.ai answer 401 {"error_msg":"Not authorized"} to an
+    anonymous POST. So does every other path on that host, so the 401 alone does not
+    prove either path exists — the endpoint SHAPE below is taken from Kana's own
+    console bundle, not guessed.
+authorization:
+  server: https://apps.kana.ai
+  metadata: https://apps.kana.ai/.well-known/oauth-authorization-server
+  scopes:
+  - mcp:read
+  - mcp:write
+  dynamic_client_registration: https://apps.kana.ai/oauth/register
+  pkce: S256
+  see: scopes/kana-scopes.yml
+evidence:
+- fact: Kana operates an MCP server behind this authorization server.
+  url: https://apps.kana.ai/.well-known/oauth-authorization-server
+  http_status: 200
+  detail: >-
+    The RFC 8414 metadata carries a non-standard "mcp_protocol_version": "2025-03-26"
+    field and advertises mcp:read / mcp:write in scopes_supported. Both are
+    provider-authored assertions of an MCP surface.
+- fact: The remote endpoint is per-deployment, at /mcp/<public access key>.
+  url: https://apps.kana.ai/index.js
+  http_status: 200
+  detail: >-
+    The console's agent "Deploy" tab builds two links from the same helper —
+    a share link at {protocol}//{host}/a/{wckey} and one labelled "MCP Server" at
+    {protocol}//{host}/mcp/{wckey}, where wckey is the agent's "Public access key"
+    field. So each deployed Kana agent/orchestrator is exposed as its own MCP server;
+    there is no single vendor-wide endpoint to record.
+- fact: Kana's platform consumes MCP internally as well as exposing it.
+  url: https://apps.kana.ai/index.js
+  http_status: 200
+  detail: >-
+    The bundle references a first-party "kana_tools" MCP toolset with a `db_query`
+    tool used to introspect external Snowflake / BigQuery / Databricks schemas, and a
+    RUN_TYP_MCP run type — i.e. runs initiated over MCP are a first-class execution
+    mode. Configuration help text states the orchestrator "is exposed as an MCP server".
+tools: []
+tools_note: >-
+  NOT ENUMERATED. An anonymous tools/list POST to apps.kana.ai returns 401, and the
+  tool set is per-deployment (it is whatever the customer's agent exposes), so there
+  is no vendor-wide catalog to capture. The only tool name Kana publishes anywhere is
+  `db_query` on the internal kana_tools server. Recovering real tool schemas requires
+  an authenticated introspection against a specific deployment's access key.
+  No tool list has been invented here.
+ownership:
+  verified: true
+  note: >-
+    apps.kana.ai serves Kana branding (title "Kana", /img/kana_icon_primary.png) and
+    its bootstrap script redirects apps.symmetri.com to apps.kana.ai; symmetri.com
+    itself now renders "Kana AI — The Future of Agentic Marketing". Symmetri is Kana's
+    former brand, so the host is Kana's own.

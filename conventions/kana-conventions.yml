@@ -1,0 +1,71 @@
+generated: '2026-08-13'
+method: derived
+source: https://apps.kana.ai/index.js
+source_note: >-
+  Derived from the OpenAPI 3.0.3 document Kana's own console bundle generates and
+  renders in Swagger UI for a deployed skill (info.title "Kana API", version 0.0.1).
+  The document is generated client-side per pipeline and is not published at a public
+  URL, so nothing was saved to openapi/ — but the operation shapes, the security
+  scheme and the error envelope below are Kana's own, read verbatim from their code.
+host: https://apps.kana.ai
+authentication:
+  style: api-key-header
+  header: x-kana-apikey
+  applied: 'every operation carries security: [{apikey: []}]'
+  oauth: >-
+    A separate OAuth 2.0 authorization server fronts the MCP surface — see
+    authentication/kana-authentication.yml and scopes/kana-scopes.yml.
+  see: authentication/kana-authentication.yml
+idempotency:
+  supported: unknown
+  header: null
+  note: >-
+    Kana documents no idempotency key, no safe-retry semantics and no replay window
+    anywhere in the generated contract or on the public site. Recorded as unknown
+    rather than false — the surface is auth-gated — and NO Idempotency pointer is
+    emitted, because the provider has not published one.
+async_execution:
+  style: submit-then-poll
+  submit: 'POST /skill/{pipelineid} -> 200 {"runid": "<id>"}'
+  poll: 'GET /run/{runid}/status -> {"progress": <float %>, "working": <bool>, "queue_sz": <int>}'
+  result: GET /run/{runid}/output
+  note: >-
+    Skill runs are asynchronous. The submit call returns only a runid; callers poll
+    status until working is false, then read output. queue_sz reports how many jobs
+    are queued platform-side — it is a backlog signal, not a rate limit.
+file_handling:
+  upload: 'PUT /file_ul?fname={original_filename} -> 200 {"tfid": "<temporary file id>"}'
+  upload_content_type: application/octet-stream
+  download: GET /file_dl/{runid}/{fid} -> application/octet-stream
+  note: >-
+    Files are staged before a run. Upload returns a temporary file id (tfid) that is
+    then passed in the skill's inputs; outputs are retrieved by (runid, fid) pair.
+error_envelope:
+  format: vendor-specific
+  rfc9457: false
+  content_type: application/json
+  shape: '{"error": {"msg": "<message>"}}'
+  status_codes:
+    '401': Invalid apikey specified (no body documented)
+    '500': Error envelope as above
+  see: errors/kana-problem-types.yml
+pagination:
+  style: none-documented
+  note: No paginated collection endpoint is exposed on the public skill surface.
+versioning:
+  style: none-in-path
+  declared_version: '0.0.1'
+  note: >-
+    The generated document declares info.version 0.0.1 and carries no version segment
+    in any path, no version header and no media-type versioning. There is no published
+    versioning or deprecation policy — see lifecycle/kana-lifecycle.yml.
+rate_limit_signaling:
+  headers: []
+  note: >-
+    No X-RateLimit-* / RateLimit-* headers, no Retry-After and no 429 response are
+    documented in the generated contract. See rate-limits/kana-rate-limits.yml.
+request_tracing:
+  request_id_header: null
+  note: >-
+    No request-id / correlation header is documented. runid is the only durable
+    handle a caller gets, and it is scoped to a skill run.

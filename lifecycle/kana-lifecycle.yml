@@ -1,0 +1,51 @@
+generated: '2026-08-13'
+method: probed
+source: live probes of kana.ai, apps.kana.ai and status/trust subdomains
+versioning:
+  scheme: none-published
+  current_version: '0.0.1'
+  version_source: >-
+    info.version in the OpenAPI document Kana's console generates for a deployed skill
+    (https://apps.kana.ai/index.js). Kana publishes no versioning policy page.
+  in_path: false
+  in_header: false
+  media_type_versioning: false
+deprecation:
+  policy_published: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  rfc8594: false
+  deprecated_operations: []
+  note: >-
+    No deprecation or sunset policy is published on any Kana surface. No Deprecation
+    pointer is emitted.
+status_page:
+  published: false
+  url: null
+  evidence:
+  - url: https://status.kana.ai
+    status: 000
+    note: does not resolve (NXDOMAIN)
+  - url: https://kana.statuspage.io
+    status: 200
+    note: >-
+      NOT a Kana status page — the hostname falls through to Atlassian's Statuspage
+      marketing site (canonical https://www.atlassian.com/software/statuspage). A soft
+      200 that carries no Kana incident data; treated as a miss. No StatusPage pointer
+      is emitted.
+  - url: https://www.kana.ai/status
+    status: 404
+sla:
+  published: false
+  note: >-
+    No public SLA. Kana's published legal set (kana.ai/legal) is a DPA, two Security &
+    Privacy Documentation PDFs, an Infrastructure & Subprocessor list and an Acceptable
+    Use Policy — no uptime or support-response commitment among them.
+changelog:
+  published: false
+  note: >-
+    No dated product or API changelog. Kana ships a Newsroom and a Blog, both editorial
+    rather than release-shaped, so no changelog/ artifact was written.
+support:
+  channel: https://www.kana.ai/contact-us
+  email: info@kana.ai

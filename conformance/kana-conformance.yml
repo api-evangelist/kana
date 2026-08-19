@@ -1,4 +1,4 @@
-generated: '2026-07-19'
+generated: '2026-08-13'
 method: searched
 source: https://www.kana.ai/legal
 docs: https://www.kana.ai/legal
@@ -9,10 +9,63 @@ standards:
 - id: hipaa
   conforms: true
   evidence: HIPAA compliance badge published on kana.ai/legal
+- id: oauth2
+  conforms: true
+  evidence: >-
+    RFC 6749 authorization-code flow with refresh tokens, advertised at
+    https://apps.kana.ai/.well-known/oauth-authorization-server (HTTP 200).
+- id: rfc8414
+  conforms: true
+  evidence: >-
+    OAuth 2.0 Authorization Server Metadata served anonymously at the canonical
+    /.well-known/oauth-authorization-server path; saved verbatim to
+    well-known/kana-oauth-authorization-server.json.
+- id: rfc7636
+  conforms: true
+  evidence: 'code_challenge_methods_supported: ["S256"] — PKCE required, plain not offered.'
+- id: rfc7591
+  conforms: true
+  evidence: >-
+    Dynamic client registration endpoint advertised at
+    https://apps.kana.ai/oauth/register.
+- id: rfc7662
+  conforms: true
+  evidence: Token introspection endpoint advertised at https://apps.kana.ai/oauth/introspect.
+- id: rfc7009
+  conforms: true
+  evidence: Token revocation endpoint advertised at https://apps.kana.ai/oauth/revoke.
+- id: mcp
+  conforms: true
+  version: '2025-03-26'
+  evidence: >-
+    "mcp_protocol_version": "2025-03-26" and mcp:read / mcp:write in scopes_supported,
+    both in the authorization-server metadata; the console exposes each deployed agent
+    as an MCP server at /mcp/{public access key}. See mcp/kana-mcp.yml.
+- id: oidc
+  conforms: false
+  evidence: >-
+    /.well-known/openid-configuration returns 401 on apps.kana.ai and 404 on
+    www.kana.ai. Kana runs an OAuth 2.0 authorization server, not an OIDC provider.
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    Errors use a flat vendor envelope {"error":{"msg":"…"}} with no
+    application/problem+json media type. See errors/kana-problem-types.yml.
+- id: rfc9116
+  conforms: false
+  evidence: >-
+    No /.well-known/security.txt on any Kana host (404 on www.kana.ai, 401 on
+    apps.kana.ai).
+- id: idempotency
+  conforms: false
+  evidence: No idempotency key or safe-retry semantics documented on any surface.
 notes: >-
   Kana publishes a legal/compliance page (kana.ai/legal) exposing a Data Processing
   Addendum, Security & Privacy Documentation (Subscription and Professional Services),
-  an Infrastructure & Subprocessor list, and an Acceptable Use Policy, alongside
-  SOC 2 Type II and HIPAA compliance badges. No public API surface is currently
-  published, so cross-cutting API standards (OAuth2/OIDC, RFC 9457, pagination,
-  idempotency) are not assessable at this time.
+  an Infrastructure & Subprocessor list, and an Acceptable Use Policy, alongside SOC 2
+  Type II and HIPAA compliance badges. The API-standards rows above were added on
+  2026-08-13 after the apps.kana.ai application host was found to serve a real RFC 8414
+  authorization-server metadata document anonymously — the only machine-readable
+  contract Kana publishes. Everything else on that host is behind a 401, so
+  cross-cutting checks that need operation-level detail (pagination, versioning,
+  content negotiation) remain unassessable.

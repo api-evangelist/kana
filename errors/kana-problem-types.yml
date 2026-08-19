@@ -1,0 +1,61 @@
+generated: '2026-08-13'
+method: derived
+source: https://apps.kana.ai/index.js
+source_note: >-
+  Derived from the responses Kana's own console bundle writes into the OpenAPI 3.0.3
+  document it generates for a deployed skill. Every status code, description and
+  schema below is verbatim from that generator; nothing is inferred.
+format: vendor-specific
+rfc9457: false
+envelope:
+  content_type: application/json
+  schema: '{"error": {"msg": "<string>"}}'
+  note: >-
+    A flat vendor envelope, not application/problem+json. There is no error `type`
+    URI, no `title`/`detail`/`instance` split, and no machine-readable error code —
+    an agent gets a human-readable message string and the HTTP status only.
+problem_types:
+- status: 401
+  applies_to:
+  - POST /skill/{pipelineid}
+  - GET /run/{runid}/status
+  - GET /run/{runid}/output
+  - PUT /file_ul
+  - GET /file_dl/{runid}/{fid}
+  title: Invalid apikey specified
+  body: none documented
+  remediation: >-
+    Supply a valid key in the x-kana-apikey header. Keys are issued from the signed-in
+    Kana console; there is no anonymous key issuance.
+- status: 500
+  applies_to:
+  - POST /skill/{pipelineid}
+  title: Error starting the skill
+  body: '{"error": {"msg": "Error message"}}'
+- status: 500
+  applies_to:
+  - GET /run/{runid}/status
+  title: Error getting status
+  body: '{"error": {"msg": "Error message"}}'
+- status: 500
+  applies_to:
+  - GET /run/{runid}/output
+  title: Error getting output
+  body: '{"error": {"msg": "Error message"}}'
+- status: 500
+  applies_to:
+  - PUT /file_ul
+  title: Error Uploading file
+  body: '{"error": {"msg": "Error message"}}'
+- status: 500
+  applies_to:
+  - GET /file_dl/{runid}/{fid}
+  title: Error getting file
+  body: '{"error": {"msg": "Error message"}}'
+gaps:
+  - No 4xx class other than 401 is documented — no 400 validation error, no 403, no
+    404 for an unknown runid, no 409, no 429.
+  - No stable error code vocabulary; callers must match on the free-text msg string.
+  - The 401 carries no body and no WWW-Authenticate challenge, so an MCP/agent client
+    cannot discover the authorization server from the failure alone (it is discoverable
+    only from /.well-known/oauth-authorization-server).

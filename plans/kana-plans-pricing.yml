@@ -1,0 +1,60 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.kana.ai/get-started
+currency: null
+plan_count: 3
+plans:
+- name: Silver
+  price: null
+  currency: null
+  billing_period: null
+  quota: null
+  overage: null
+  applies_to:
+  - Kana Category Intelligence
+  - Kana Campaign Orchestrator
+  signup_url: https://apps.kana.ai/
+  note: >-
+    Tier name published on the get-started page as a self-serve "immediate access"
+    entry point; no price, quota, or included-usage figure is published anywhere.
+- name: Gold
+  price: null
+  currency: null
+  billing_period: null
+  quota: null
+  overage: null
+  applies_to:
+  - Kana Category Intelligence
+  - Kana Campaign Orchestrator
+  signup_url: https://apps.kana.ai/
+  note: Tier name published; no price or limits published.
+- name: Platinum
+  price: null
+  currency: null
+  billing_period: null
+  quota: null
+  overage: null
+  applies_to:
+  - Kana Campaign Orchestrator
+  signup_url: https://apps.kana.ai/
+  note: >-
+    Tier name published for Campaign Orchestrator only; Category Intelligence offers
+    Silver and Gold. No price or limits published.
+enterprise:
+  contact_only: true
+  path: '"Build with Kana" — contact the team to begin building agentic marketing applications'
+  url: https://www.kana.ai/get-started
+notes: >-
+  Kana publishes NAMED tiers but NO PRICES. There is no /pricing page (probed 404) and
+  no plans endpoint. The get-started page links each tier straight into the application
+  host (apps.kana.ai/?appid=…&utm_content=silver|gold|platinum), so tier selection
+  happens after sign-in and the price is only disclosed there. Every price/quota field
+  above is null because the provider publishes no figure — not because it was not
+  checked.
+x-evidence:
+- url: https://www.kana.ai/get-started
+  status: 200
+- url: https://www.kana.ai/pricing
+  status: 404
+- url: https://www.kana.ai/plans
+  status: 404

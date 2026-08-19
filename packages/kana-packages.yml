@@ -1,0 +1,22 @@
+generated: '2026-08-13'
+method: searched
+source: npm registry search, PyPI, and the Kana public site
+package_count: 0
+packages: []
+official_sdk_count: 0
+notes: >-
+  No first-party Kana client library exists on any public registry. npm's search API
+  returns no package owned by or referencing kana.ai (only unrelated Japanese-kana
+  text utilities); PyPI has no `kana` project (404). Kana publishes no GitHub
+  organization, no SDK page and no source-code link. The platform's own integration
+  story is server-side (a Just-In-Time data-integration layer with native connectors
+  to Salesforce, Marketo, Eloqua, S3, Snowflake, BigQuery and Databricks), and the
+  callable surfaces it exposes — the x-kana-apikey Skill API and the per-deployment
+  MCP endpoint — are meant to be called directly rather than through a vendor SDK.
+  Recorded as a checked zero. No SDKs pointer is emitted.
+x-evidence:
+- url: https://registry.npmjs.org/-/v1/search?text=kana%20ai&size=20
+  status: 200
+  note: no first-party result
+- url: https://pypi.org/pypi/kana/json
+  status: 404

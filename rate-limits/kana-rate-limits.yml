@@ -1,0 +1,28 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://www.kana.ai (marketing site + FAQ + get-started), https://apps.kana.ai
+  (application host), and the OpenAPI document Kana's console generates for a deployed
+  skill (https://apps.kana.ai/index.js)
+limit_count: 0
+limits: []
+response_headers: []
+exhaustion_status: null
+retry_after: false
+notes: >-
+  Kana publishes no rate limits. There is no developer portal, no public API reference
+  and no limits table on any Kana surface. The contract Kana's own console generates
+  for a deployed skill documents 200/401/500 only — no 429, no Retry-After, and no
+  X-RateLimit-* or RateLimit-* response headers. The one throughput signal Kana does
+  expose is queue_sz on GET /run/{runid}/status, which reports the platform-side job
+  backlog; that is a capacity/latency hint, not a quota, and it is not recorded as a
+  limit here. An honest zero.
+x-evidence:
+- url: https://www.kana.ai/docs
+  status: 404
+- url: https://www.kana.ai/developers
+  status: 404
+- url: https://apps.kana.ai/docs
+  status: 401
+- url: https://apps.kana.ai/index.js
+  status: 200

@@ -1,15 +1,67 @@
-generated: '2026-07-19'
+generated: '2026-08-13'
 method: searched
-host: https://www.kana.ai
-documents:
-- path: /.well-known/security.txt
-  status: 404
-- path: /.well-known/openid-configuration
-  status: 404
-- path: /.well-known/oauth-authorization-server
-  status: 404
-- path: /.well-known/api-catalog
-  status: 404
-- path: /.well-known/ai-plugin.json
-  status: 404
-notes: No /.well-known discovery documents are currently published on the Kana host.
+source: live probes of the kana.ai marketing host and the apps.kana.ai application host
+hosts:
+- host: https://apps.kana.ai
+  note: >-
+    Kana's application / API host (the console the get-started page links to, and the
+    host that redirects apps.symmetri.com — Kana's former Symmetri brand — to itself).
+    Every path on this host answers 401 {"error_msg":"Not authorized"} EXCEPT
+    /.well-known/oauth-authorization-server, which is served anonymously and is a real
+    RFC 8414 authorization-server metadata document.
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json; charset=utf-8
+    file: kana-oauth-authorization-server.json
+    spec: RFC 8414
+    note: >-
+      Real document. Declares authorization/token/registration/introspection/revocation
+      endpoints, PKCE S256, RFC 7591 dynamic client registration, four supported scopes
+      (mcp:read, mcp:write, kana:read, kana:write) and a non-standard
+      "mcp_protocol_version": "2025-03-26" field — provider-published evidence that
+      Kana operates an MCP server behind this authorization server.
+  - path: /.well-known/oauth-protected-resource
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+- host: https://www.kana.ai
+  note: >-
+    Webflow-hosted marketing site. All /.well-known/* paths return a Webflow
+    "Invalid .well-known request" 404 page. /llms.txt IS served (200) — saved at
+    llms/kana-llms.txt.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 200
+    file: ../llms/kana-llms.txt
+notes: >-
+  One real discovery document was found: the RFC 8414 OAuth authorization-server
+  metadata at apps.kana.ai. No security.txt is served on any Kana host, so no
+  SecurityTxt pointer is emitted. No agent card was found on any host, so per the
+  pipeline's search-only rule nothing was written to a2a/.
