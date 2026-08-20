@@ -70,6 +70,10 @@ apis:
   tags:
   - Agentic AI
   - Marketing
+  - Workflows
+  tags_raw:
+  - Agentic AI
+  - Marketing
   - Workflow
   properties:
   - type: Authentication
@@ -95,6 +99,9 @@ apis:
   humanURL: https://apps.kana.ai/
   baseURL: https://apps.kana.ai
   tags:
+  - MCP
+  - Agentic AI
+  tags_raw:
   - Model Context Protocol
   - Agentic AI
   properties:
