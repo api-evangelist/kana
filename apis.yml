@@ -128,6 +128,11 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/salesforce/
+  name: Salesforce
+  x-relationship: acquired
+  x-evidence: "Founded by martech veterans Tom Chavez and Vivek Vaidya (previously Rapt, acquired by Microsoft, and Krux, acquired by Salesforce) and incubated in the super{set} startup studio, Kana raised a $15M seed round led by Mayfield in February 202"
 - type: Website
   url: https://www.kana.ai
 - type: Blog
