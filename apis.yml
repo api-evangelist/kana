@@ -59,6 +59,16 @@ tags:
 - Company
 - Marketing
 - Artificial Intelligence
+- AI Agents
+- Marketing Technology
+- Audience Intelligence
+- Customer Data Platform
+- AI Search Optimization
+- Growth
+tags_raw:
+- Company
+- Marketing
+- Artificial Intelligence
 - Agentic AI
 - Marketing Technology
 - Audience Intelligence
@@ -79,7 +89,7 @@ apis:
   humanURL: https://apps.kana.ai/
   baseURL: https://apps.kana.ai
   tags:
-  - Agentic AI
+  - AI Agents
   - Marketing
   - Workflows
   tags_raw:
@@ -111,7 +121,7 @@ apis:
   baseURL: https://apps.kana.ai
   tags:
   - MCP
-  - Agentic AI
+  - AI Agents
   tags_raw:
   - Model Context Protocol
   - Agentic AI
