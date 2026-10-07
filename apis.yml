@@ -138,6 +138,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Pricing
+  url: https://www.kana.ai/get-started
 - type: Website
   url: https://www.kana.ai
 - type: Blog
