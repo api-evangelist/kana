@@ -58,3 +58,27 @@ x-evidence:
   status: 404
 - url: https://www.kana.ai/plans
   status: 404
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Silver
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Gold
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Platinum
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
