@@ -64,6 +64,118 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Kana is a company surfaced as a portfolio company of mayfield and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Kana is an agentic AI growth and marketing platform that helps brands discover high-precision audiences, optimize acquisition efficiency, and stay visible across AI-driven discovery environments such as LLM answer engines, search copilots, and autonomous agents. Founded by martech veterans Tom Chavez and Vivek Vaidya (previously Rapt, acquired by Microsoft, and Krux, acquired by Salesforce) and incubated in the super{set} startup studio, Kana raised a $15M seed round led by Mayfield in February 2026. The platform orchestrates specialized AI agents that reason over customer data, plan multi-step workflows, and recommend next-best actions across a suite of purpose-built applications: Campaign Orchestrator, Marketing Intelligence, Personalization, Synthetic Data Generation, Media Proposal Generator, Category Intelligence, Audience Builder, OmniChannel Media Planner, and an Agentic Data Platform. Proprietary just-in-time data integration connects to existing CRM, CDP, marketing-automation, and data-warehouse systems without disruptive infrastructure changes, keeping a human-in-the-loop review step. Kana ships no public developer portal, but its application host apps.kana.ai does expose a real callable surface: an OAuth 2.0 authorization server whose RFC 8414 metadata is served anonymously and declares MCP protocol 2025-03-26 with mcp:read / mcp:write / kana:read / kana:write scopes, plus a per-deployment MCP endpoint and an api-key-authenticated Skill API for running pipelines and retrieving their outputs. Everything but the OAuth metadata sits behind a 401, so this profile captures Kana's public identity, legal/compliance posture, authentication and scope model, and the shape of the gated API surface.
 
-Backed by: mayfield — https://kana.ai
+**Areas:** Company · Marketing · Artificial Intelligence · AI Agents · Marketing Technology · Audience Intelligence · Customer Data Platform · AI Search Optimization · Growth
+
+## Kana on APIs.io
+
+Everything profiled for Kana is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/kana/](https://apis.io/providers/kana/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Kana Skill API](https://apis.io/apis/kana/kana-skill-api/) — The callable surface a deployed Kana pipeline ("skill") exposes on the Kana application host. POST /skill/{pipelineid} starts a run and returns a runid; GET…
+- [Kana MCP Server](https://apis.io/apis/kana/kana-mcp-server/) — Kana exposes each deployed agent/orchestrator as a remote MCP server at https://apps.kana.ai/mcp/{public access key}, fronted by the platform's OAuth 2.0…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Kana MCP Server](https://apis.io/servers/kana/kana-mcp-server/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Kana Authentication](https://apis.io/security/kana/kana-authentication/)
+- [Kana Domain Security](https://apis.io/security/kana/kana-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Kana Scopes](https://apis.io/scopes/kana/kana-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Kana Plans Pricing](https://apis.io/plans/kana/kana-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Kana Rate Limits](https://apis.io/rate-limits/kana/kana-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.kana.ai)
+- [Getting started](https://www.kana.ai/get-started)
+- [Pricing](https://www.kana.ai/get-started)
+- [Sign up](https://www.kana.ai/get-started)
+- [Support](https://www.kana.ai/contact-us)
+- [Blog](https://www.kana.ai/blog)
+- [Compliance](https://www.kana.ai/legal)
+- [Privacy policy](https://www.kana.ai/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 32.6** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 73.7 |
+
+**Agent readiness 23.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | templated |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 32.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/kana/](https://apis.io/providers/kana/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Kana: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/kana/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
